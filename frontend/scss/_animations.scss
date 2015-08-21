@@ -1,0 +1,77 @@
+/*
+ *	Animations file
+ */
+ /* Variables for animations */
+$animation-duration:800ms;
+
+
+/* Overlay animations */
+@include keyframes(swipeDown){
+  0% {}
+  50%, 60% {
+    -o-transform: translate(0,0); 
+    -moz-transform: translate(0,0);
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0); }
+  100% {
+    -o-transform: translate(0,100%); 
+    -moz-transform: translate(0,100%);
+    -webkit-transform: translate(0,100%);
+    transform: translate(0,100%); }
+}
+
+@include keyframes(swipeUp){
+  0% {}
+  50%, 60% {
+    -o-transform: translate(0,0); 
+    -moz-transform: translate(0,0);
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0); }
+  100% {
+    -o-transform: translate(0,100%); 
+    -moz-transform: translate(0,100%);
+    -webkit-transform: translate(0,100%);
+    transform: translate(0,100%); }
+}
+
+/* Content Animations*/
+@include keyframes(showContent){
+  from { visibility: hidden; }
+  60%, 100% { visibility: visible; }
+}
+@include keyframes(hideContent){
+  from { visibility: visible; }
+  60%, 100% { visibility: hidden; }
+}
+
+/* Shadow animations */
+@include keyframes(showShadow){
+  0% {box-shadow:none}
+  50%, 60% { box-shadow:none}
+  100% {box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16); }
+}
+@include keyframes(hideShadow){
+  0% {box-shadow: 0 3px 10px rgba(0,0,0,0.23),0 3px 10px rgba(0,0,0,0.16);}
+  50%, 60% { box-shadow:none}
+  100% {}
+}
+@include keyframes (bounce) {
+	0% {transform:scale(1.1)}
+	45% {transform:scale(1.5)}
+	70% {transform:scale(0.8)}
+	100% {transform:scale(1)}
+}
+
+@include keyframes (shake) {
+  0% {transform: translateX(0);}
+  12.5% {transform: translateX(-6px) rotateY(-5deg)}
+  37.5% {transform: translateX(5px) rotateY(4deg)}
+  62.5% {transform: translateX(-3px) rotateY(-2deg)}
+  87.5% {transform: translateX(2px) rotateY(1deg)}
+  100% {transform: translateX(0)}
+}
+
+@include keyframes (shift) {
+  0% {transform: translateX(-100px);}
+  100% {transform: translateX(0)}
+}

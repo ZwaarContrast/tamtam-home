@@ -1,0 +1,137 @@
+/*
+ *  Mixins
+ */
+
+@mixin rgba($color, $value) {
+  background-color: $color;
+  background-color: rgba($color, $value);
+}
+
+@mixin photoshop-drop-shadow ($angle: 0, $distance: 0, $spread: 0, $size: 0, $color: #000, $inner: false) {
+  $angle: (180 - $angle) * pi() / 180; // convert to radians
+  $h-shadow: round(cos($angle) * $distance);
+  $v-shadow: round(sin($angle) * $distance);
+  $css-spread: $size * $spread/100;
+  $blur: ($size - $css-spread);
+  $inset: if($inner != false, 'inset', '');
+  
+  @include box-shadow($h-shadow $v-shadow $blur $css-spread $color unquote($inset));
+}
+
+@mixin triple-photoshop-drop-shadow ( $angle: 0, $distance: 0, $spread: 0, $size: 0, $color: #000, $inner: false, 
+                                    $angle2: 0, $distance2: 0, $spread2: 0, $size2: 0, $color2: #000, $inner2: false,
+                                    $angle3: 0, $distance3: 0, $spread3: 0, $size3: 0, $color3: #000, $inner3: false) {
+  $angle: (180 - $angle) * pi() / 180; // convert to radians
+  $h-shadow: round(cos($angle) * $distance);
+  $v-shadow: round(sin($angle) * $distance);
+  $css-spread: $size * $spread/100;
+  $blur: ($size - $css-spread);
+  $inset: if($inner != false, 'inset', '');
+
+  $angle2: (180 - $angle2) * pi() / 180; // convert to radians
+  $h-shadow2: round(cos($angle2) * $distance2);
+  $v-shadow2: round(sin($angle2) * $distance2);
+  $css-spread2: $size2 * $spread2/100;
+  $blur2: ($size2 - $css-spread2);
+  $inset2: if($inner2 != false, 'inset', '');
+
+  $angle3: (180 - $angle3) * pi() / 180; // convert to radians
+  $h-shadow3: round(cos($angle3) * $distance3);
+  $v-shadow3: round(sin($angle3) * $distance3);
+  $css-spread3: $size3 * $spread3/100;
+  $blur3: ($size3 - $css-spread3);
+  $inset3: if($inner3 != false, 'inset', '');
+  
+  @include box-shadow($h-shadow $v-shadow $blur $css-spread $color unquote($inset),
+                      $h-shadow2 $v-shadow2 $blur2 $css-spread2 $color2 unquote($inset2),
+                      $h-shadow3 $v-shadow3 $blur3 $css-spread3 $color3 unquote($inset3));
+}
+
+@mixin double-photoshop-drop-shadow ($angle: 0, $distance: 0, $spread: 0, $size: 0, $color: #000, $inner: false, $angle2: 0, $distance2: 0, $spread2: 0, $size2: 0, $color2: #000, $inner2: false) {
+  $angle: (180 - $angle) * pi() / 180; // convert to radians
+  $h-shadow: round(cos($angle) * $distance);
+  $v-shadow: round(sin($angle) * $distance);
+  $css-spread: $size * $spread/100;
+  $blur: ($size - $css-spread);
+  $inset: if($inner != false, 'inset', '');
+
+  $angle2: (180 - $angle2) * pi() / 180; // convert to radians
+  $h-shadow2: round(cos($angle2) * $distance2);
+  $v-shadow2: round(sin($angle2) * $distance2);
+  $css-spread2: $size2 * $spread2/100;
+  $blur2: ($size2 - $css-spread2);
+  $inset2: if($inner2 != false, 'inset', '');
+  
+  @include box-shadow($h-shadow $v-shadow $blur $css-spread $color unquote($inset),$h-shadow2 $v-shadow2 $blur2 $css-spread2 $color2 unquote($inset2));
+}
+
+@mixin photoshop-inner-shadow ($angle: 0, $distance: 0, $spread: 0, $size: 0, $color: #000) {
+  @include photoshop-drop-shadow ($angle, $distance, $spread, $size, $color, true);
+}
+
+@mixin photoshop-text-shadow ($angle: 0, $distance: 0, $spread: 0, $size: 0, $color: #000) {
+  // NOTE: $spread has no effect for text shadows
+  $angle: (180 - $angle) * pi() / 180;
+  $h-shadow: round(cos($angle) * $distance);
+  $v-shadow: round(sin($angle) * $distance);
+  $css-spread: $size * $spread/100;
+  $blur: ($size - $css-spread);
+  
+  @include text-shadow($h-shadow $v-shadow $blur $color);
+}
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+@mixin animation ($animation, $duration:0, $delay:0, $ease: linear , $count: infinite , $mode: forwards ) {
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+    -webkit-animation-timing-function: $ease;
+    -webkit-animation-iteration-count: $count;
+    -webkit-animation-fill-mode: $mode; /* this prevents the animation from restarting! */
+ 
+    -moz-animation-delay: $delay;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $animation;
+    -moz-animation-timing-function: $ease;
+    -moz-animation-iteration-count: $count;
+    -moz-animation-fill-mode: $mode; /* this prevents the animation from restarting! */
+ 
+    -o-animation-delay: $delay;
+    -o-animation-duration: $duration;
+    -o-animation-name: $animation;
+    -o-animation-timing-function: $ease;
+    -o-animation-iteration-count: $count;
+    -o-animation-fill-mode: $mode; /* this prevents the animation from restarting! */
+ 
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-timing-function: $ease;
+    animation-iteration-count: $count;
+    animation-fill-mode: $mode; /* this prevents the animation from restarting! */
+}
+
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}

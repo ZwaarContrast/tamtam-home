@@ -1,0 +1,43 @@
+/*
+ *	Colors file
+ */
+
+//Definitions generals
+$color-green: #64b57e;
+$color-white: #fff;
+$color-black: #454545;
+$color-gray-light: #f5f5f3; //backgroundcolor
+$color-gray-medium-light:#e3e3e3;
+$color-gray-medium:#ccc;
+$color-gray: #a2a2a2; //Derived from 50% opacity black 
+$color-gray-dark: #414850;
+
+$color-gray-blueish:#b1bec0; //Used for borders of blockquotes for now
+
+//Blue
+$color-blue:#3aafda;
+$color-blue-light:#4fc1e9;
+
+//Lime
+$color-lime:#8dc153;
+$color-lime-light:#a0d468;
+$color-lime-dark:#6da937;
+
+//Red
+$color-red:#db4453;
+$color-red-light:#ed5565;
+
+//Yellow
+$color-yellow:#f6bb43;
+$color-yellow-light:#ffce54;
+
+//Turqoise
+$color-turqoise-light:lighten(#48cfad,6%);
+$color-turqoise:#48cfad;
+
+//Purple
+$color-purple-light:lighten(#ac92ec,6%);
+$color-purple:#ac92ec;
+
+//Orange
+$color-orange:#f37031;
